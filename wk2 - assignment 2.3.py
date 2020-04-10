@@ -7,14 +7,7 @@
 
 # This first line is provided for you
 
-hrs = input("Enter Hours:")
-
-rate = input("Enter Rate:")
-
-hrs = float(hrs)
-
-rate = float(rate)
-
-pay = hrs*rate
-
-print (pay)
+hrs=input("Enter Hour:")
+rate=input("Enter Rate per Hour:")
+pay=float(hrs)*float(rate)
+print("Pay:", pay)

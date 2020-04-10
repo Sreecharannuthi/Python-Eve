@@ -8,14 +8,17 @@ you are testing below enter mbox-short.txt as the file name.
 
 # Use the file name mbox-short.txt as the file name
 fname = raw_input("Enter file name: ")
+if len(fname) == 0:
+    fname = 'mbox-short.txt'
 fh = open(fname)
-sum = 0.0
 count = 0
-
+tot = 0
+ans = 0
 for line in fh:
-        if not line.startswith("X-DSPAM-Confidence:") : continue
-sum = sum + float(line[20:])
-count = count + 1
-
-print ("Average spam confidence:", sum/count)
+    if not line.startswith("X-DSPAM-Confidence:") : continue
+    count = count + 1
+    num = float(line[21:])
+    tot = num + tot
+ans = tot / count
+print("Average spam confidence:", ans)
 

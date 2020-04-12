@@ -5,20 +5,15 @@ Hint: make sure not to include the lines that start with 'From:'.
 
 You can download the sample data at http://www.pythonlearn.com/code/mbox-short.txt
 
-fname = input("Enter file name: ")
+fname = raw_input("Enter file name: ")
 if len(fname) < 1 : fname = "mbox-short.txt"
 
 fh = open(fname)
 count = 0
-
-for line in fh:
-        line.rstrip()
-words = line.split()
-if words == []: continue
-if words[0] == "From":
-        count += 1
-print (words[1])
-
-
-print ("There were", count, "lines in the file with From as the first word")
+l = [i.split() for i in fh.readlines() 
+            if i.startswith("From") and i.find("@")>0 and len(i.split())>2]
+for i in l:
+    print (i[1])
+    count+=1
+print("There were", count, "lines in the file with From as the first word")
 
